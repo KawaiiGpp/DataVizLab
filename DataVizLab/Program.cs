@@ -4,16 +4,23 @@ namespace DataVizLab
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            try
+            {
+                ApplicationConfiguration.Initialize();
+                Application.Run(new MainForm());
+            }
+            catch (Exception exception)
+            {
+                var dateTime = $"{DateTime.Now:yyyy-MM-dd-HH-mm-ss}";
+                File.AppendAllText($"ErrorLog-{dateTime}.txt", $"{exception}");
+
+                MessageBox.Show("程序遭遇无法处理的致命错误。\n" +
+                    "错误信息已记录，请联系开发者。\n" +
+                    $"{exception.Message}", "程序崩溃");
+            }
         }
     }
 }

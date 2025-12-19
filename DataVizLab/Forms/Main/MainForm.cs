@@ -1,3 +1,5 @@
+using DataVizLab.Core;
+
 namespace DataVizLab.Forms.Main
 {
     public partial class MainForm : Form
@@ -19,7 +21,9 @@ namespace DataVizLab.Forms.Main
 
         private void btnInput_Click(object sender, EventArgs e)
         {
-            
+            using var fileSelector = new FileSelector();
+            if (!fileSelector.TrySelect(out string path)) return;
+            // TODO read the file.
         }
     }
 }
