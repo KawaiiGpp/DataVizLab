@@ -16,5 +16,10 @@ namespace DataVizLab.Forms.Main
             config.LockHorizontalAxis = true;
             config.ScrollWheelZoom = false;
         }
+
+        private void btnInput_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

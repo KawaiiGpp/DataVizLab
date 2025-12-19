@@ -34,8 +34,6 @@ namespace DataVizLab.Forms.Main
             panelButtons = new TableLayoutPanel();
             btnInput = new Button();
             btnNew = new Button();
-            btnEdit = new Button();
-            btnReset = new Button();
             chart = new FormsPlot();
             panelRoot.SuspendLayout();
             panelButtons.SuspendLayout();
@@ -59,15 +57,13 @@ namespace DataVizLab.Forms.Main
             // 
             // panelButtons
             // 
-            panelButtons.ColumnCount = 4;
-            panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            panelButtons.ColumnCount = 2;
+            panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             panelButtons.Controls.Add(btnInput, 0, 0);
             panelButtons.Controls.Add(btnNew, 1, 0);
-            panelButtons.Controls.Add(btnEdit, 2, 0);
-            panelButtons.Controls.Add(btnReset, 3, 0);
             panelButtons.Dock = DockStyle.Fill;
             panelButtons.Location = new Point(13, 379);
             panelButtons.Name = "panelButtons";
@@ -81,40 +77,21 @@ namespace DataVizLab.Forms.Main
             btnInput.Dock = DockStyle.Fill;
             btnInput.Location = new Point(3, 3);
             btnInput.Name = "btnInput";
-            btnInput.Size = new Size(154, 41);
+            btnInput.Size = new Size(315, 41);
             btnInput.TabIndex = 0;
             btnInput.Text = "导入";
             btnInput.UseVisualStyleBackColor = true;
+            btnInput.Click += btnInput_Click;
             // 
             // btnNew
             // 
             btnNew.Dock = DockStyle.Fill;
-            btnNew.Location = new Point(163, 3);
+            btnNew.Location = new Point(324, 3);
             btnNew.Name = "btnNew";
-            btnNew.Size = new Size(154, 41);
+            btnNew.Size = new Size(315, 41);
             btnNew.TabIndex = 1;
             btnNew.Text = "新建";
             btnNew.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Dock = DockStyle.Fill;
-            btnEdit.Location = new Point(323, 3);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(154, 41);
-            btnEdit.TabIndex = 2;
-            btnEdit.Text = "编辑";
-            btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnReset
-            // 
-            btnReset.Dock = DockStyle.Fill;
-            btnReset.Location = new Point(483, 3);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new Size(156, 41);
-            btnReset.TabIndex = 3;
-            btnReset.Text = "重置";
-            btnReset.UseVisualStyleBackColor = true;
             // 
             // chart
             // 
@@ -147,8 +124,6 @@ namespace DataVizLab.Forms.Main
         private TableLayoutPanel panelButtons;
         private Button btnInput;
         private Button btnNew;
-        private Button btnEdit;
-        private Button btnReset;
         private FormsPlot chart;
     }
 }
