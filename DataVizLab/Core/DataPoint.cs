@@ -1,6 +1,4 @@
 ﻿namespace DataVizLab.Core
 {
-    internal class DataPoint
-    {
-    }
+    public record DataPoint(string Label, double Position, double Value);
 }
