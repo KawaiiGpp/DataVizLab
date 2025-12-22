@@ -1,4 +1,4 @@
-﻿namespace DataVizLab.Core
+﻿namespace DataVizLab.Utils
 {
     public class Result<T> where T : notnull
     {
@@ -35,8 +35,8 @@
 
         public bool IsFailed => !success;
 
-        public static Result<U> Success<U>(U value) where U : notnull => new(value, null, true);
+        public static Result<T> Success(T value) => new(value, null, true);
 
-        public static Result<U> Failure<U>(string error) where U : notnull => new(default, error, false);
+        public static Result<T> Failure(string error) => new(default, error, false);
     }
 }
