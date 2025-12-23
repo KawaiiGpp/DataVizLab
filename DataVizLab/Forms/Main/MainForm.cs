@@ -4,10 +4,14 @@ namespace DataVizLab.Forms.Main
 {
     public partial class MainForm : Form
     {
+        private readonly ChartHandler chartHandler;
+
         public MainForm()
         {
             InitializeComponent();
             SetupChart();
+
+            chartHandler = new(chart);
         }
 
         private void SetupChart()
@@ -23,7 +27,19 @@ namespace DataVizLab.Forms.Main
         {
             using var fileSelector = new FileSelector();
             if (!fileSelector.TrySelect(out string path)) return;
-            // TODO read the file.
+
+            using var reader = new DataFileReader(path);
+            var result = reader.Read();
+
+            if (result.IsFailed)
+            {
+                MessageBox.Show($"{result.Error}", "∂¡»° ß∞‹");
+                return;
+            }
+
+            chartHandler.Apply(result.Value);
+            chartHandler.Adapt();
+            chartHandler.Update();
         }
     }
 }

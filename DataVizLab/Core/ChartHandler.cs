@@ -8,6 +8,8 @@ namespace DataVizLab.Core
 
         public void Apply(Session session)
         {
+            Reset();
+
             var plot = control.Plot;
             var data = session.Data;
 
@@ -16,18 +18,20 @@ namespace DataVizLab.Core
             var labels = data.Select(data => data.Label).ToArray();
 
             plot.AddScatter(positions, values);
+
+            plot.XAxis.TickLabelFormat(i =>
+            {
+                var x = (int)Math.Round(i);
+
+                if ((uint) x >= labels.Length) return "";
+                else return labels[(int)i];
+            });
         }
 
-        public void Adapt()
-        {
-            control.Plot.AxisAuto();
-            control.Refresh();
-        }
+        public void Update() => control.Refresh();
 
-        public void Reset()
-        {
-            control.Plot.Clear();
-            Adapt();
-        }
+        public void Adapt() => control.Plot.AxisAuto();
+
+        public void Reset() => control.Plot.Clear();
     }
 }
