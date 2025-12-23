@@ -1,7 +1,8 @@
 ﻿using System.Text;
+using DataVizLab.Core;
 using DataVizLab.Utils;
 
-namespace DataVizLab.Core
+namespace DataVizLab.Tools
 {
     public sealed class DataFileReader : IDisposable
     {

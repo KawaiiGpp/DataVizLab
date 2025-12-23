@@ -1,4 +1,4 @@
-﻿namespace DataVizLab.Core
+﻿namespace DataVizLab.Tools
 {
     public sealed class FileSelector : IDisposable
     {

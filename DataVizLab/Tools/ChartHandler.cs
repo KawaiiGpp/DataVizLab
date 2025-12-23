@@ -1,6 +1,7 @@
-﻿using ScottPlot;
+﻿using DataVizLab.Core;
+using ScottPlot;
 
-namespace DataVizLab.Core
+namespace DataVizLab.Tools
 {
     public class ChartHandler(FormsPlot formsPlot)
     {
@@ -29,7 +30,7 @@ namespace DataVizLab.Core
             {
                 var x = (int)Math.Round(i);
 
-                if ((uint) x >= labels.Length) return "";
+                if ((uint)x >= labels.Length) return "";
                 else return labels[(int)i];
             });
         }
