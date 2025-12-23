@@ -37,7 +37,12 @@ namespace DataVizLab.Forms.Main
                 return;
             }
 
-            chartHandler.Apply(result.Value);
+            chartHandler.Reset();
+
+            var session = result.Value;
+            chartHandler.Setup(session);
+            chartHandler.Apply(session);
+
             chartHandler.Adapt();
             chartHandler.Update();
         }

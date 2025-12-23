@@ -6,10 +6,16 @@ namespace DataVizLab.Core
     {
         private readonly FormsPlot control = formsPlot;
 
+        public void Setup(Session session)
+        {
+            var plot = control.Plot;
+
+            plot.XLabel(session.PositionName);
+            plot.YLabel(session.ValueName);
+        }
+
         public void Apply(Session session)
         {
-            Reset();
-
             var plot = control.Plot;
             var data = session.Data;
 
@@ -32,6 +38,15 @@ namespace DataVizLab.Core
 
         public void Adapt() => control.Plot.AxisAuto();
 
-        public void Reset() => control.Plot.Clear();
+        public void Reset()
+        {
+            var plot = control.Plot;
+
+            plot.Clear();
+            plot.XLabel("");
+            plot.YLabel("");
+            plot.XAxis2.Label("");
+            plot.YAxis2.Label("");
+        }
     }
 }
