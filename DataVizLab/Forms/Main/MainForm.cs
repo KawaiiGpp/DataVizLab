@@ -45,6 +45,8 @@ namespace DataVizLab.Forms.Main
 
             chartHandler.Adapt();
             chartHandler.Update();
+
+            MessageBox.Show($"已输入共{session.Data.Count}条数据。", "读取成功");
         }
     }
 }
