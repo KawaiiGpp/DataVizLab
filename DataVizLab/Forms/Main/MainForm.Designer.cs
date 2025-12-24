@@ -33,7 +33,7 @@ namespace DataVizLab.Forms.Main
             panelRoot = new TableLayoutPanel();
             panelButtons = new TableLayoutPanel();
             btnInput = new Button();
-            btnNew = new Button();
+            btnReset = new Button();
             chart = new FormsPlot();
             panelRoot.SuspendLayout();
             panelButtons.SuspendLayout();
@@ -63,7 +63,7 @@ namespace DataVizLab.Forms.Main
             panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             panelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             panelButtons.Controls.Add(btnInput, 0, 0);
-            panelButtons.Controls.Add(btnNew, 1, 0);
+            panelButtons.Controls.Add(btnReset, 1, 0);
             panelButtons.Dock = DockStyle.Fill;
             panelButtons.Location = new Point(13, 379);
             panelButtons.Name = "panelButtons";
@@ -83,15 +83,16 @@ namespace DataVizLab.Forms.Main
             btnInput.UseVisualStyleBackColor = true;
             btnInput.Click += btnInput_Click;
             // 
-            // btnNew
+            // btnReset
             // 
-            btnNew.Dock = DockStyle.Fill;
-            btnNew.Location = new Point(324, 3);
-            btnNew.Name = "btnNew";
-            btnNew.Size = new Size(315, 41);
-            btnNew.TabIndex = 1;
-            btnNew.Text = "新建";
-            btnNew.UseVisualStyleBackColor = true;
+            btnReset.Dock = DockStyle.Fill;
+            btnReset.Location = new Point(324, 3);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(315, 41);
+            btnReset.TabIndex = 1;
+            btnReset.Text = "重置";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // chart
             // 
@@ -123,7 +124,7 @@ namespace DataVizLab.Forms.Main
         private TableLayoutPanel panelRoot;
         private TableLayoutPanel panelButtons;
         private Button btnInput;
-        private Button btnNew;
+        private Button btnReset;
         private FormsPlot chart;
     }
 }

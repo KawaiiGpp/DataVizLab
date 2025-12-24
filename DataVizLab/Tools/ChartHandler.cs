@@ -42,6 +42,7 @@ namespace DataVizLab.Tools
         public void Reset()
         {
             var plot = control.Plot;
+            plot.XAxis.TickLabelFormat(null);
 
             plot.Clear();
             plot.XLabel("");

@@ -48,5 +48,12 @@ namespace DataVizLab.Forms.Main
 
             MessageBox.Show($"已输入共{session.Data.Count}条数据。", "读取成功");
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            chartHandler.Reset();
+            chartHandler.Adapt();
+            chartHandler.Update();
+        }
     }
 }
