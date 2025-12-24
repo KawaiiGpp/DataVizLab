@@ -25,35 +25,49 @@ namespace DataVizLab.Forms.Main
 
         private void btnInput_Click(object sender, EventArgs e)
         {
-            using var fileSelector = new FileSelector();
-            if (!fileSelector.TrySelect(out string path)) return;
-
-            using var reader = new DataFileReader(path);
-            var result = reader.Read();
-
-            if (result.IsFailed)
+            try
             {
-                MessageBox.Show($"{result.Error}", "读取失败");
-                return;
+                using var fileSelector = new FileSelector();
+                if (!fileSelector.TrySelect(out string path)) return;
+
+                using var reader = new DataFileReader(path);
+                var result = reader.Read();
+
+                if (result.IsFailed)
+                {
+                    MessageBox.Show($"{result.Error}", "读取失败");
+                    return;
+                }
+
+                chartHandler.Reset();
+
+                var session = result.Value;
+                chartHandler.Setup(session);
+                chartHandler.Apply(session);
+
+                chartHandler.Adapt();
+                chartHandler.Update();
+
+                MessageBox.Show($"已输入共{session.Data.Count}条数据。", "读取成功");
             }
-
-            chartHandler.Reset();
-
-            var session = result.Value;
-            chartHandler.Setup(session);
-            chartHandler.Apply(session);
-
-            chartHandler.Adapt();
-            chartHandler.Update();
-
-            MessageBox.Show($"已输入共{session.Data.Count}条数据。", "读取成功");
+            catch (Exception exception)
+            {
+                ExceptionHandler.Launch(exception, "点击读取数据按钮");
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            chartHandler.Reset();
-            chartHandler.Adapt();
-            chartHandler.Update();
+            try
+            {
+                chartHandler.Reset();
+                chartHandler.Adapt();
+                chartHandler.Update();
+            }
+            catch (Exception exception)
+            {
+                ExceptionHandler.Launch(exception, "点击重置图表按钮");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 using DataVizLab.Forms.Main;
+using DataVizLab.Tools;
 
 namespace DataVizLab
 {
@@ -14,12 +15,7 @@ namespace DataVizLab
             }
             catch (Exception exception)
             {
-                var dateTime = $"{DateTime.Now:yyyy-MM-dd-HH-mm-ss}";
-                File.AppendAllText($"ErrorLog-{dateTime}.txt", $"{exception}");
-
-                MessageBox.Show("程序遭遇无法处理的致命错误。\n" +
-                    "错误信息已记录，请联系开发者。\n" +
-                    $"{exception.Message}", "程序崩溃");
+                ExceptionHandler.Launch(exception);
             }
         }
     }
